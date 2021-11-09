@@ -5,70 +5,69 @@ import { AuthGuard } from './guard/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'landing',
-    pathMatch: 'full'
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
     path: 'landing',
-    loadChildren: () => import('./pages/landing/landing.module').then(m => m.LandingPageModule)
+    loadChildren: () => import('./pages/landing/landing.module').then((m) => m.LandingPageModule),
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/auth/register/register.module').then(m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/auth/register/register.module').then((m) => m.RegisterPageModule),
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./pages/auth/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./pages/home/home.module').then((m) => m.HomePageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'myaccount',
-    loadChildren: () => import('./pages/myaccount/myaccount.module').then( m => m.MyaccountPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./pages/myaccount/myaccount.module').then((m) => m.MyaccountPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'notifications',
-    loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./pages/notifications/notifications.module').then((m) => m.NotificationsPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'credits',
-    loadChildren: () => import('./pages/credits/credits.module').then( m => m.CreditsPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./pages/credits/credits.module').then((m) => m.CreditsPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'privacy',
-    loadChildren: () => import('./pages/privacy/privacy.module').then( m => m.PrivacyPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./pages/privacy/privacy.module').then((m) => m.PrivacyPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'notifications-logs',
-    loadChildren: () => import('./pages/notifications-logs/notifications-logs.module').then( m => m.NotificationsLogsPageModule),
-    canActivate: [AuthGuard]
+    loadChildren: () => import('./pages/notifications-logs/notifications-logs.module').then((m) => m.NotificationsLogsPageModule),
+    canActivate: [AuthGuard],
   },
   {
-    path: 'threat-env',
-    loadChildren: () => import('./pages/threat-env/threat-env.module').then( m => m.ThreatEnvPageModule),
-    canActivate: [AuthGuard]
+    path: 'city',
+    loadChildren: () => import('./pages/city/city.module').then((m) => m.CityPageModule),
+    canActivate: [AuthGuard],
   },
   {
-    path: 'threat-map',
-    loadChildren: () => import('./pages/threat-map/threat-map.module').then( m => m.ThreatMapPageModule),
-    canActivate: [AuthGuard]
-  }
+    path: 'recover',
+    loadChildren: () => import('./pages/auth/recover/recover.module').then((m) => m.RecoverPageModule),
+  },
+  {
+    path: 'lading2',
+    loadChildren: () => import('./pages/lading2/lading2.module').then( m => m.Lading2PageModule)
+  },
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

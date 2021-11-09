@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>myaccount</ion-title>
+  <ion-toolbar mode="ios">
+    <ion-title>Configuración</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <div>
+    <h2>Otros ajustes</h2>
+    <ion-list>
+      <ion-radio-group name="basemap-radio-group" allow-empty-selection="false" #basemapRadioGroup>
+        <ion-list-header>
+          <ion-label>Mapa cartográfico base</ion-label>
+        </ion-list-header>
 
+        <ion-item>
+          <ion-label>Esri Oscuro (Predeterminado)</ion-label>
+          <ion-radio slot="start" value="esri-dark" (ionSelect)="setBaseMap('esri-dark')"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Esri Satelital</ion-label>
+          <ion-radio slot="start" value="esri-sat" (ionSelect)="setBaseMap('esri-sat')"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Esri Vial</ion-label>
+          <ion-radio slot="start" value="esri-vial" (ionSelect)="setBaseMap('esri-vial')"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
 </ion-content>

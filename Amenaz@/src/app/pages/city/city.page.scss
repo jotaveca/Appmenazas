@@ -1,0 +1,84 @@
+ion-toolbar {
+  color: white;
+  --background: #d40000;
+  ion-title {
+    font-size: large;
+  }
+}
+ion-fab-button[data-desc] {
+  position: relative;
+}
+
+ion-fab-button[data-desc]::after {
+  position: absolute;
+  content: attr(data-desc);
+  z-index: 1;
+  right: 55px;
+  bottom: 4px;
+  background-color: var(--ion-color-medium);
+  padding: 9px;
+  border-radius: 15px;
+  color: black;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.toolbar {
+  color: black;
+  background-color: white;
+}
+
+/* ---------------------------------- */
+
+.toolbar {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+.toolbar > .toolbar-element {
+  flex-grow: 1;
+  padding: 5px;
+  border: none;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+}
+
+.label {
+  font-size: xx-small;
+}
+
+.icon {
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+}
+
+.list-at-top {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.easy-button-button.leaflet-bar-part.leaflet-interactive.unnamed-state-active {
+  width: 30px;
+  height: 30px;
+  background-color: #efefef !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+  -webkit-tap-highlight-color: #efefef; 
+  -webkit-touch-callout: none;
+}
+
+#lfHomeBtn {
+  width: 30px;
+  height: 30px;
+  background-color: #efefef !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); 
+  -webkit-tap-highlight-color: #efefef; 
+  -webkit-touch-callout: none;
+}

@@ -1,39 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, MenuController, NavController } from '@ionic/angular';
+import { ModalController, MenuController, NavController, Platform} from '@ionic/angular';
 import { RegisterPage } from '../auth/register/register.page';
 import { LoginPage } from '../auth/login/login.page';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import{ EventsService } from 'src/app/services/events.service';
+
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.page.html',
-  styleUrls: ['./landing.page.scss']
+  styleUrls: ['./landing.page.scss'],
 })
+    
 export class LandingPage implements OnInit {
-  constructor(
-    private modalController: ModalController,
-    private menu: MenuController,
-    private authService: AuthService,
-    private navCtrl: NavController
-  ) {
+  backButtonSubscription;
+  email:any;
+  constructor( private modalController: ModalController, private menu: MenuController, private authService: AuthService, private navCtrl: NavController, private platform: Platform, public events: EventsService, public router:Router,){
     this.menu.enable(false);
   }
-  ionViewWillEnter() {
-    this.authService.getToken().then(() => {
-      if (this.authService.isLoggedIn) {
-        this.navCtrl.navigateRoot('/home');
-      }
+  ionViewWillEnter(){
+    // data => {
+    //     this.events.publish('user-login', data);
+    //   },
+    this.backButtonSubscription = this.platform.backButton.subscribe(async () => {
+      navigator['app'].exitApp();
     });
   }
-  ngOnInit() {}
+  ionViewDidLeave() {
+    this.backButtonSubscription.unsubscribe();
+  }
+  ngOnInit(){
+    this.email=JSON.parse(localStorage.getItem('iniciar_sesion'));
+  }
   async register() {
     const registerModal = await this.modalController.create({
-      component: RegisterPage
+      component: RegisterPage,
     });
     return await registerModal.present();
   }
   async login() {
     const loginModal = await this.modalController.create({
-      component: LoginPage
+      component: LoginPage,
     });
     return await loginModal.present();
   }
